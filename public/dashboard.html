@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HOMMIE</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- Incluir Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <h1>HOMMIE</h1>
+        </div>
+        <nav class="user-nav">
+            <i class="fas fa-user-circle profile-icon" title="Editar Perfil"></i>
+            <i class="fas fa-sign-out-alt logout-icon" title="Sair"></i>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="active"><i class="fas fa-list"></i> Listagem</a>
+                <a href="dashboard.html"><i class="fas fa-star"></i> Favoritos</a>
+                <a href="chats.html"><i class="fas fa-comments"></i> Chats</a>
+            </nav>
+        </aside>
+
+        <main class="feed-container">
+            <!-- Barra de Filtro no Topo -->
+            <div class="top-filter-bar">
+                <i class="fas fa-search filter-input-icon"></i>
+                <input type="text" id="openFilterModal" class="filter-input" placeholder="Filtro" readonly>
+            </div>
+
+            <div id="propertyFeed" class="property-feed">
+                <!-- O conteúdo dos imóveis será carregado aqui via AJAX -->
+                <p class="loading-message">Carregando imóveis...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de Filtro (Baseado em Filter.png) -->
+    <div id="filterModalOverlay" class="filter-modal-overlay">
+        <div class="filter-modal">
+            <div class="modal-header">
+                <i class="fas fa-search"></i>
+                <h3>Filtro</h3>
+            </div>
+
+            <form id="filterForm">
+                <div class="modal-input-group select-wrapper">
+                    <label>Tipo:</label>
+                    <select name="type_select" id="type_select" class="custom-select">
+                        <option value="">Selecione</option>
+                        <option value="Venda">Venda</option>
+                        <option value="Aluguel">Aluguel</option>
+                    </select>
+                </div>
+                <div class="modal-input-group">
+                    <label>Localização:</label>
+                    <input type="text" name="location">
+                </div>
+                <div class="modal-input-group">
+                    <label>Quartos:</label>
+                    <input type="number" name="rooms" class="custom-number-input">
+                </div>
+                <div class="modal-input-group">
+                    <label>Vagas:</label>
+                    <input type="number" name="parking" class="custom-number-input">
+                </div>
+                <div class="modal-input-group">
+                    <label>Valor:</label>
+                    <div class="value-range-group">
+                        <input type="text" name="value_min" placeholder="Mínimo">
+                        <span>até</span>
+                        <input type="text" name="value_max" placeholder="Máximo">
+                    </div>
+                </div>
+                <button type="submit" class="modal-search-button">Buscar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

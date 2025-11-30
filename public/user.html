@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - HOMMIE</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/user.css">
+    <!-- Incluir Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <h1>HOMMIE</h1>
+        </div>
+        <nav class="user-nav">
+            <i class="fas fa-user-circle profile-icon" title="Editar Perfil"></i>
+            <i class="fas fa-sign-out-alt logout-icon" title="Sair"></i>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html"><i class="fas fa-list"></i> Listagem</a>
+                <a href="dashboard.html"><i class="fas fa-star"></i> Favoritos</a>
+                <a href="chats.html"><i class="fas fa-comments"></i> Chats</a>
+            </nav>
+        </aside>
+
+        <main class="profile-container">
+            <!-- Cabeçalho do Perfil -->
+            <div class="profile-header">
+                <a href="dashboard.html" class="back-button-profile">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h2>Perfil</h2>
+            </div>
+
+            <!-- Seção do Avatar e Informações Básicas -->
+            <div class="profile-section">
+                <div class="profile-avatar-section">
+                    <div class="profile-avatar">
+                        <!-- Avatar placeholder -->
+                    </div>
+                </div>
+
+                <div class="profile-info">
+                    <h3 id="profileName">Carregando...</h3>
+                </div>
+
+                <div class="profile-details">
+                    <div class="detail-item">
+                        <label>Cidade:</label>
+                        <p id="profileCity">-</p>
+                    </div>
+                    <div class="detail-item">
+                        <label>Profissão:</label>
+                        <p id="profileProfession">-</p>
+                    </div>
+                    <div class="detail-item">
+                        <label>Interesses:</label>
+                        <p id="profileInterests">-</p>
+                    </div>
+                    <div class="detail-item">
+                        <label>Sobre:</label>
+                        <p id="profileBio">-</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Históricos -->
+            <div class="history-section">
+                <h3>Histórico:</h3>
+                <div id="historyGrid">
+                    <p class="loading-message">Carregando Histórico...</p>
+                </div>
+            </div>
+
+            <!-- Seção de Acomodações -->
+            <div class="accommodations-section">
+                <h3>Acomodações:</h3>
+                <div class="accommodations-grid" id="accommodationsGrid">
+                    <p class="loading-message">Carregando acomodações...</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/user.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "validUser": {
+    "username": "Novo Usuário",
+    "password": "senha123",
+    "name": "test_user"
+  },
+  "invalidUser": {
+    "name": "wronguser",
+    "username": "wronguser",
+    "password": "pass"
+  },
+  "newUser": {
+    "name": "Novo Usuário",
+    "username": "novo_usuario",
+    "password": "senha123",
+    "city": "São Paulo",
+    "profession": "Desenvolvedor"
+  },
+  "secondUser": {
+    "name": "Segundo Usuário",
+    "username": "segundo_usuario",
+    "password": "senha123",
+    "city": "São Paulo",
+    "profession": "Desenvolvedor"
+  }
+}

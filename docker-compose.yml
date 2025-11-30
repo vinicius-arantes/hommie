@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # Serviço PHP-FPM
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: projeto_web_php
+    ports:
+      - "9003:9003"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - postgres
+    networks:
+      - postgres
+    # O PHP-FPM não precisa expor portas diretamente, pois será acessado pelo Nginx
+
+  # Serviço Nginx (Servidor Web)
+  nginx:
+    image: nginx:stable-alpine
+    container_name: projeto_web_nginx
+    ports:
+      - "8080:80" # Mapeia a porta 8080 da sua máquina para a porta 80 do container
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf # Monta o arquivo de configuração do Nginx
+    depends_on:
+      - php # Garante que o PHP suba antes do Nginx
+    networks:
+      - postgres
+
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: hommie
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    volumes:
+      - postgres_data:/pgdata:/var/lib/postgresql
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  postgres:

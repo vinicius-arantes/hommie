@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anunciar - HOMMIE</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/create_property.css">
+    <!-- Incluir Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <h1>HOMMIE</h1>
+        </div>
+        <nav class="user-nav">
+            <i class="fas fa-user-circle profile-icon" title="Editar Perfil"></i>
+            <i class="fas fa-sign-out-alt logout-icon" title="Sair"></i>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html"><i class="fas fa-list"></i> Listagem</a>
+                <a href="dashboard.html"><i class="fas fa-star"></i> Favoritos</a>
+                <a href="chats.html"><i class="fas fa-comments"></i> Chats</a>
+            </nav>
+        </aside>
+
+        <main class="create-property-container">
+            <!-- Cabeçalho -->
+            <div class="create-property-header">
+                <a href="profile.html" class="back-button-create">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h2>Anunciar</h2>
+            </div>
+
+            <!-- Formulário de Criação de Imóvel -->
+            <form id="createPropertyForm" class="create-property-form">
+                <!-- Tipo de Imóvel -->
+                <div class="property-type-section">
+                    <button type="button" class="type-btn active" data-type="Aluguel">Aluguel</button>
+                    <button type="button" class="type-btn" data-type="Venda">Venda</button>
+                </div>
+
+                <!-- Preço -->
+                <div class="form-group">
+                    <label for="price">Valor:</label>
+                    <input type="text" id="price" name="price" placeholder="R$ 0,00" required>
+                </div>
+
+                <!-- Descrição -->
+                <div class="form-group">
+                    <label for="description">Sobre o lugar:</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Descreva o imóvel..."></textarea>
+                </div>
+
+                <!-- Localização -->
+                <div class="form-group">
+                    <label for="location">Localização:</label>
+                    <input type="text" id="location" name="location" placeholder="Cidade, Estado" required>
+                </div>
+
+                <!-- Localidades Próximas -->
+                <div class="form-group">
+                    <label for="nearby">Localidades próximas:</label>
+                    <input type="text" id="nearby" name="nearby" placeholder="Ex: Parque, Escola, Metrô">
+                </div>
+
+                <!-- Dimensão -->
+                <div class="form-group">
+                    <label for="area">Dimensão:</label>
+                    <input type="number" id="area" name="area" placeholder="m²" min="0">
+                </div>
+
+                <!-- Detalhes -->
+                <div class="details-section">
+                    <h3>Detalhes:</h3>
+                    
+                    <div class="detail-item">
+                        <i class="fas fa-car"></i>
+                        <label for="vagas">Vagas:</label>
+                        <select id="vagas" name="vagas">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+
+                    <div class="detail-item">
+                        <i class="fas fa-bed"></i>
+                        <label for="quartos">Quartos:</label>
+                        <select id="quartos" name="quartos">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+
+                    <div class="detail-item">
+                        <i class="fas fa-bath"></i>
+                        <label for="banheiros">Banheiros:</label>
+                        <select id="banheiros" name="banheiros">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+
+                    <div class="popup-item">
+                        <input type="checkbox" id="pet-popup" name="pet-popup">
+                        <label for="pet-popup">Permitido pet</label>
+                    </div>
+                    <div class="popup-item">
+                        <input type="checkbox" id="elevador" name="elevador">
+                        <label for="elevador">Elevador</label>
+                    </div>
+                    <div class="popup-item">
+                        <input type="checkbox" id="portaria" name="portaria">
+                        <label for="portaria">Porteiro 24h</label>
+                    </div>
+                    
+                </div>
+
+                <!-- Upload de Fotos -->
+                <div class="form-group">
+                    <label for="photos">Upload das fotos:</label>
+                    <button type="button" class="upload-btn" id="uploadBtn">Fazer upload</button>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="form-buttons">
+                    <button type="submit" class="save-btn">Salvar</button>
+                    <button type="button" class="cancel-btn" id="cancelBtn">Cancelar</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/create_property.js"></script>
+</body>
+</html>

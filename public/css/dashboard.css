@@ -1,0 +1,413 @@
+/* Estilos para o Dashboard baseados no Dashboard.png e Filter.png */
+
+:root {
+    --color-background-light: #fcf4ed; /* Fundo bege claro */
+    --color-primary-red: #ff5757; /* Vermelho/Laranja do header e coração */
+    --color-sidebar-bg: #ff8c57; /* Laranja mais suave para a sidebar */
+    --color-text-dark: #333;
+    --color-text-light: #777;
+    --color-card-bg: #fff;
+    --color-input-border: #ccc;
+}
+
+body {
+    background-color: var(--color-background-light);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o Header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--color-primary-red);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    box-sizing: border-box;
+    height: 50px; /* Altura fixa para o header */
+}
+
+.main-header .logo h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user-nav {
+    display: flex;
+    align-items: center;
+}
+
+.user-nav .profile-icon {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Estilos para o Layout Principal (Sidebar + Feed) */
+.main-content {
+    display: flex;
+    padding-top: 50px; /* Espaço para o header fixo */
+    min-height: 100vh;
+}
+
+/* Estilos para a Sidebar de Navegação (Laranja) */
+.sidebar {
+    width: 200px; /* Largura ajustada */
+    background-color: var(--color-sidebar-bg);
+    min-height: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    overflow-y: auto;
+    padding-top: 20px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--color-text-dark);
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-bottom: 5px;
+}
+
+.sidebar-nav a i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.sidebar-nav a.active {
+    background-color: var(--color-primary-red);
+    color: white;
+    border-radius: 0 10px 10px 0;
+}
+
+.sidebar-nav a:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Estilos para o Feed Central */
+.feed-container {
+    margin-left: 200px; /* Compensar a largura da sidebar fixa */
+    flex-grow: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Campo de Filtro no Topo do Feed */
+.top-filter-bar {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    position: relative;
+}
+
+.filter-input {
+    width: 100%;
+    padding: 15px 15px 15px 50px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.filter-input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-primary-red);
+    font-size: 20px;
+    pointer-events: none;
+}
+
+/* Estilos para o Modal de Filtro (Filter.png) */
+.filter-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /* Inicialmente escondido */
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.filter-modal {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header i {
+    color: var(--color-primary-red);
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--color-text-dark);
+}
+
+.filter-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-options button 
+,.filter-options select
+{
+    padding: 8px 15px;
+    border: 1px solid var(--color-input-border);
+    border-radius: 20px;
+    background-color: white;
+    color: var(--color-text-dark);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-options button.active 
+,.filter-options select.active
+{
+    background-color: var(--color-primary-red);
+    color: white;
+    border-color: var(--color-primary-red);
+}
+
+/* Estilos para o elemento <select> */
+.custom-select {
+    /* Remove a aparência padrão do navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    /* Estilo da caixa */
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    /* Adiciona espaço para o ícone customizado */
+    padding-right: 30px;
+}
+
+/* Estilo de foco */
+.custom-select:focus {
+    border-color: #ff5757; /* Cor primária */
+    box-shadow: 0 0 0 2px rgba(255, 87, 87, 0.2);
+}
+
+/* Estilo para o wrapper que contém o select e o ícone */
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%; /* Ajuste conforme necessário */
+}
+
+/* Ícone de seta customizado */
+.select-wrapper::after {
+    content: '\f078'; /* Código Unicode para a seta para baixo do Font Awesome */
+    font-family: 'Font Awesome 5 Free'; /* Garanta que o Font Awesome esteja carregado */
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #999;
+    pointer-events: none; /* Garante que o clique passe para o select */
+    font-size: 12px;
+}
+
+.modal-input-group {
+    margin-bottom: 15px;
+}
+
+.modal-input-group label {
+    display: block;
+    font-size: 14px;
+    color: var(--color-text-light);
+    margin-bottom: 5px;
+}
+
+.modal-input-group input[type="text"] {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid var(--color-input-border);
+    box-sizing: border-box;
+    font-size: 16px;
+    outline: none;
+}
+
+.value-range-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.value-range-group input {
+    flex-grow: 1;
+}
+
+.modal-search-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-primary-red);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-search-button:hover {
+    background-color: #e74c3c;
+}
+
+/* Estilos para o Feed de Imóveis (mantidos do v5, mas adaptados) */
+.property-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.property-card {
+    display: flex;
+    background-color: var(--color-card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.property-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.property-image-placeholder {
+    width: 150px;
+    height: 150px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+
+.property-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.property-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.property-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-primary-red);
+    margin-bottom: 5px;
+}
+
+.property-location {
+    font-size: 14px;
+    color: var(--color-text-dark);
+    font-weight: bold;
+}
+
+.property-details {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--color-text-light);
+}
+
+.property-detail-item {
+    display: flex;
+    align-items: center;
+}
+
+.property-detail-item i {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.favorite-icon {
+    color: #ccc;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transition: color 0.3s ease;
+}
+
+.favorite-icon.favorite-active {
+    color: var(--color-primary-red);
+}
+
+/* Estilos para o elemento <input type="number"> */
+.custom-number-input {
+    /* Estilo da caixa */
+    width: 97%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Estilo de foco */
+.custom-number-input:focus {
+    border-color: #ff5757; /* Cor primária */
+    box-shadow: 0 0 0 2px rgba(255, 87, 87, 0.2);
+}
