@@ -3,10 +3,7 @@ describe('Testes de Dashboard', () => {
     // Realizar login antes de cada teste
     cy.visit('/index.html')
     cy.fixture('users').then((users) => {
-      cy.get('#username').type(users.validUser.username)
-      cy.get('#password').type(users.validUser.password)
-      cy.get('#loginButton').click()
-      cy.wait(1000)
+      cy.login(users.validUser.username, users.validUser.password)
     })
   })
 
@@ -122,6 +119,8 @@ describe('Testes de Dashboard', () => {
 
   it('Deve redirecionar para login ao fazer logout', () => {
     cy.visit('/dashboard.html')
+
+    cy.wait(1000)
     
     cy.get('.logout-icon').should('exist')
       .click()

@@ -3,10 +3,7 @@ describe('Testes de Propriedades', () => {
     // Realizar login antes de cada teste
     cy.visit('/index.html')
     cy.fixture('users').then((users) => {
-      cy.get('#username').type(users.validUser.username)
-      cy.get('#password').type(users.validUser.password)
-      cy.get('#loginButton').click()
-      cy.wait(1000)
+      cy.login(users.validUser.username, users.validUser.password)
     })
   })
 

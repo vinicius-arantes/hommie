@@ -18,25 +18,5 @@ Cypress.Commands.add('login', (username, password) => {
   cy.get('#username').type(username)
   cy.get('#password').type(password)
   cy.get('#loginButton').click()
-})
-
-/**
- * Comando customizado para fazer logout
- */
-Cypress.Commands.add('logout', () => {
-  cy.get('.logout-button').click()
-})
-
-/**
- * Comando customizado para verificar se está na página de dashboard
- */
-Cypress.Commands.add('shouldBeOnDashboard', () => {
-  cy.url().should('include', '/dashboard.html')
-})
-
-/**
- * Comando customizado para verificar se está na página de login
- */
-Cypress.Commands.add('shouldBeOnLogin', () => {
-  cy.url().should('include', '/index.html')
+  cy.wait(1000)
 })

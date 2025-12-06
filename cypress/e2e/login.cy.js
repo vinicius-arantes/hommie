@@ -67,8 +67,8 @@ describe('Testes de Login', () => {
       cy.get('#password').type(users.validUser.password)
       cy.get('#loginButton').click()
       
-      // Verificar redirecionamento (ajustar conforme comportamento real)
       cy.wait(1000)
+      cy.url().should('include', '/dashboard.html');
     })
   })
 
